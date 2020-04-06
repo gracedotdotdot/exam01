@@ -1,8 +1,10 @@
 #include "mbed.h"
+#include "uLCD_4DGL.h"
 
 AnalogOut Aout(DAC0_OUT);
 Serial pc( USBTX, USBRX );
 AnalogIn Ain(A0);
+uLCD_4DGL uLCD(D1, D0, D2); // serial tx, serial rx, reset pin;
 float ADCdata;
 
 
@@ -23,6 +25,15 @@ int main(){
         }
         wait(0.5);
     }
+    uLCD.circle(10 , 10 , 2, BLUE);
+
+    uLCD.printf("\nGrace\n"); //Default Green on black text
+
+    uLCD.text_width(4); //4X size text
+
+    uLCD.text_height(4);
+
+    uLCD.color(RED);
 
   }
 
